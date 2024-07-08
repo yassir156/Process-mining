@@ -1,0 +1,961 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions exporter="Mega" exporterVersion="900.5777"
+    targetNamespace="http://www.mega.com/bpmn20"
+    xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+    xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+    xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+    xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <bpmn:collaboration id="MegaId-27CF38E163619AC4COLLAB">
+        <bpmn:participant id="MegaId-CBE9CF956345702DPOOL"
+            name="ECM- Préparer l'achat (Consultation)" processRef="MegaId-CBE9CF956345702D"/>
+    </bpmn:collaboration>
+    <bpmn:process id="MegaId-CBE9CF956345702D" name="ECM- Préparer l'achat (Consultation)">
+        <bpmn:documentation>La présente procédure définit les responsabilités et modalités de préparation d'un achat, dans le cas des achats par bon de commande, depuis l'expression du besoin jusqu'à la transformation de la DA en bon de commande.&#xd;
+Elle est déclenchée par l'expression du besoin faite par le MOA. &#xd;
+Elle s'achève par la transformation de la DA en bon de commande par l'acheteur ou le retour de la DA en cas d’un marché fructueux au demandeur MOA.</bpmn:documentation>
+        <bpmn:laneSet>
+            <bpmn:lane id="MegaId-4663496A63590AB0" name="ECM-Responsable MOA">
+                <bpmn:flowNodeRef>MegaId-466349C363590B29</bpmn:flowNodeRef>
+                <bpmn:flowNodeRef>MegaId-46634AA363590D04</bpmn:flowNodeRef>
+                <bpmn:flowNodeRef>MegaId-87C18B8C635F3F93</bpmn:flowNodeRef>
+                <bpmn:flowNodeRef>MegaId-87C18BE9635F4061</bpmn:flowNodeRef>
+                <bpmn:flowNodeRef>MegaId-87C18C1C635F4113</bpmn:flowNodeRef>
+            </bpmn:lane>
+            <bpmn:lane id="MegaId-4DA9518D6359149C" name="Oracle EBS">
+                <bpmn:flowNodeRef>MegaId-87C198C9635F4F71</bpmn:flowNodeRef>
+            </bpmn:lane>
+            <bpmn:lane id="MegaId-4DA951A8635914E3" name="Acheteur">
+                <bpmn:flowNodeRef>MegaId-4DA953C76359175B</bpmn:flowNodeRef>
+                <bpmn:flowNodeRef>MegaId-4DA954256359182E</bpmn:flowNodeRef>
+                <bpmn:flowNodeRef>MegaId-87C1993B635F5082</bpmn:flowNodeRef>
+            </bpmn:lane>
+            <bpmn:lane id="MegaId-CBE9CFB0634572A4" name="ECM-Demandeur MOA">
+                <bpmn:flowNodeRef>MegaId-87C19AD9635F5250</bpmn:flowNodeRef>
+                <bpmn:flowNodeRef>MegaId-87C19B99635F53BD</bpmn:flowNodeRef>
+                <bpmn:flowNodeRef>MegaId-87C19BB1635F5471</bpmn:flowNodeRef>
+                <bpmn:flowNodeRef>MegaId-CBE9CFA563457192</bpmn:flowNodeRef>
+                <bpmn:flowNodeRef>MegaId-CBE9D0006345748E</bpmn:flowNodeRef>
+                <bpmn:flowNodeRef>MegaId-CBE9D003634574DF</bpmn:flowNodeRef>
+                <bpmn:flowNodeRef>MegaId-CBE9D38B63457A21</bpmn:flowNodeRef>
+                <bpmn:flowNodeRef>MegaId-CBE9E3EA63458CAA</bpmn:flowNodeRef>
+                <bpmn:flowNodeRef>MegaId-CBE9E40A63458D71</bpmn:flowNodeRef>
+            </bpmn:lane>
+            <bpmn:lane id="MegaId-CBE9CFB1634572F3" name="Responsable Entité Achats">
+                <bpmn:flowNodeRef>MegaId-4DA94E3B635910AC</bpmn:flowNodeRef>
+                <bpmn:flowNodeRef>MegaId-4DA94E9763591126</bpmn:flowNodeRef>
+                <bpmn:flowNodeRef>MegaId-4DA95D086359212C</bpmn:flowNodeRef>
+                <bpmn:flowNodeRef>MegaId-87C1979E635F4DD4</bpmn:flowNodeRef>
+                <bpmn:flowNodeRef>MegaId-87C1988A635F4F01</bpmn:flowNodeRef>
+            </bpmn:lane>
+            <bpmn:lane id="MegaId-CBE9CFB16345734E" name="Responsable Entité Achats">
+                <bpmn:flowNodeRef>MegaId-87C18C67635F41E4</bpmn:flowNodeRef>
+                <bpmn:flowNodeRef>MegaId-87C18D64635F4403</bpmn:flowNodeRef>
+                <bpmn:flowNodeRef>MegaId-87C18E1C635F44E4</bpmn:flowNodeRef>
+                <bpmn:flowNodeRef>MegaId-87C18FA4635F4687</bpmn:flowNodeRef>
+                <bpmn:flowNodeRef>MegaId-CBE9D00C634575CF</bpmn:flowNodeRef>
+                <bpmn:flowNodeRef>MegaId-CBE9D55963457B47</bpmn:flowNodeRef>
+                <bpmn:flowNodeRef>MegaId-CBE9D5D963457CC8</bpmn:flowNodeRef>
+            </bpmn:lane>
+            <bpmn:lane id="MegaId-CBE9CFC9634573C2" name="ECM-Responsable Unité Ordonnancement des Dépenses">
+                <bpmn:flowNodeRef>MegaId-87C190B9635F4797</bpmn:flowNodeRef>
+                <bpmn:flowNodeRef>MegaId-87C19228635F4953</bpmn:flowNodeRef>
+                <bpmn:flowNodeRef>MegaId-87C19319635F4A43</bpmn:flowNodeRef>
+                <bpmn:flowNodeRef>MegaId-87C1936B635F4AFD</bpmn:flowNodeRef>
+                <bpmn:flowNodeRef>MegaId-87C19552635F4C20</bpmn:flowNodeRef>
+                <bpmn:flowNodeRef>MegaId-CBE9D017634576BF</bpmn:flowNodeRef>
+                <bpmn:flowNodeRef>MegaId-CBE9D65263457DE1</bpmn:flowNodeRef>
+                <bpmn:flowNodeRef>MegaId-CBE9D73263458004</bpmn:flowNodeRef>
+                <bpmn:flowNodeRef>MegaId-CBE9D7F1634581F3</bpmn:flowNodeRef>
+            </bpmn:lane>
+            <bpmn:lane id="MegaId-CBE9CFCA6345741F" name="Directeur des Achats et de la Logistique">
+                <bpmn:flowNodeRef>MegaId-CBE9D0246345770F</bpmn:flowNodeRef>
+                <bpmn:flowNodeRef>MegaId-CBE9D9B0634583DB</bpmn:flowNodeRef>
+            </bpmn:lane>
+        </bpmn:laneSet>
+        <bpmn:businessRuleTask id="MegaId-466349C363590B29" name="3. Vérifier la DA">
+            <bpmn:documentation>[CTRL]&#xd;
+Le directeur MOA contrôle et valide la DA (Opportunité, exhaustivité du besoin technique et estimation du coût) ; peut également rejeter la DA ou demander plus d'informations (via mail) à l'initiateur de la DA.</bpmn:documentation>
+        </bpmn:businessRuleTask>
+        <bpmn:businessRuleTask id="MegaId-CBE9D003634574DF" name="SUBMIT">
+            <bpmn:documentation>Après la saisie de la DA dans le SI achat par le demandeur (MOA), le directeur de la structure (MOA) est notifié du besoin de validation de la DA (par mail ou via le SI achat) </bpmn:documentation>
+        </bpmn:businessRuleTask>
+        <bpmn:businessRuleTask id="MegaId-CBE9D00C634575CF" name="4. Valider la DA">
+            <bpmn:documentation>[CTRL]&#xd;
+a) Après validation de la DA par le Directeur MOA, l'EA contrôle la recevabilité (besoin clair ou pas, cahier des prescriptions techniques le cas échéant) de la DA telle que saisie dans le SI Achat, en vérifiant :&#xd;
+- Que le cahier des Prescriptions Techniques est recevable et annexé (le cas échéant) ;&#xd;
+- Qu'une fiche de non recours est annexée pour les achats par BC directe, conformément à l'annexe 3B du RM,&#xd;
+- Que l'estimation du budget est correctement saisie.&#xd;
+b) L'EA valide ou rejette la DA, au plus tard 2 jours ouvrables après sa réception ; en cas de non validation, l'EA précise la nature des éléments ou des aspects à réviser (un champ « commentaire », permet d'ajouter un commentaire concernant la non validation).&#xd;
+c) En cas de non validation, une notification est envoyée automatiquement au MOA pour compléter la DA.</bpmn:documentation>
+        </bpmn:businessRuleTask>
+        <bpmn:businessRuleTask id="MegaId-CBE9D017634576BF" name="5. Valider la DA">
+            <bpmn:documentation>[CTRL]&#xd;
+a) Après validation de la DA par le Responsable EA, le responsable de l'Entité Conformité et Ordonnancement (DAL) est informé du besoin de validation de la DA, il contrôle l'imputation budgétaire. Il valide ou rejette la DA, au plus tard 1 jour ouvrable après sa réception, (un champ « commentaire » permet d'ajouter un commentaire concernant.&#xd;
+la non validation)&#xd;
+b) En cas de non validation, une notification est envoyée automatiquement au MOA pour compléter la DA.&#xd;
+c) En cas de validation et si le montant de la DA inférieur à 50.000 DH : Le traitement se poursuit à partir de la tâche 7</bpmn:documentation>
+        </bpmn:businessRuleTask>
+        <bpmn:businessRuleTask id="MegaId-CBE9D0246345770F" name="APPROVE">
+            <bpmn:documentation>[CTRL]&#xd;
+En cas de validation et si le montant de la DA est supérieur à 50.000 DH :&#xd;
+a) Le Directeur de la DAL est informé du besoin d'approbation de la DA (par mail ou via Oracle EBS), il doit vérifier :&#xd;
+- Que le cahier des prescriptions techniques est recevable et annexé (le cas échéant) ;&#xd;
+- Qu'une fiche de non recours est annexée pour les achats par BC directe, conformément à l'annexe 3B du RM,&#xd;
+- Que l'estimation du budget est correctement saisie.&#xd;
+b) Il approuve la DA dans le Système (via Oracle EBS ou par lien inclus dans le mail de notification),&#xd;
+&gt; Le Responsable EA est notifié de l'approbation de la DA.&#xd;
+&gt; En cas de non validation, une notification est envoyée automatiquement au MOA pour compléter la DA</bpmn:documentation>
+        </bpmn:businessRuleTask>
+        <bpmn:callActivity calledElement="MegaId-C5D7D17C6329468E"
+            id="MegaId-CBE9E3EA63458CAA" name="Transfert et rallonges"/>
+        <bpmn:endEvent id="MegaId-4DA954256359182E" name="DA transformée en BC"/>
+        <bpmn:endEvent id="MegaId-CBE9E40A63458D71" name="Fin"/>
+        <bpmn:eventBasedGateway eventGatewayType="Exclusive"
+            gatewayDirection="Unspecified" id="MegaId-87C18B8C635F3F93"
+            instantiate="false" name="Besoin de complément d'information?"/>
+        <bpmn:eventBasedGateway eventGatewayType="Exclusive"
+            gatewayDirection="Unspecified" id="MegaId-87C18C67635F41E4"
+            instantiate="false" name=""/>
+        <bpmn:eventBasedGateway eventGatewayType="Exclusive"
+            gatewayDirection="Unspecified" id="MegaId-87C18D64635F4403"
+            instantiate="false" name="Besoin de complement d'information ?"/>
+        <bpmn:eventBasedGateway eventGatewayType="Exclusive"
+            gatewayDirection="Unspecified" id="MegaId-87C190B9635F4797"
+            instantiate="false" name=""/>
+        <bpmn:eventBasedGateway eventGatewayType="Exclusive"
+            gatewayDirection="Unspecified" id="MegaId-87C19228635F4953"
+            instantiate="false" name="Besoin de complément d'information.?"/>
+        <bpmn:eventBasedGateway eventGatewayType="Exclusive"
+            gatewayDirection="Unspecified" id="MegaId-87C1979E635F4DD4"
+            instantiate="false" name=""/>
+        <bpmn:eventBasedGateway eventGatewayType="Exclusive"
+            gatewayDirection="Unspecified" id="MegaId-87C19BB1635F5471"
+            instantiate="false" name=""/>
+        <bpmn:exclusiveGateway gatewayDirection="Unspecified"
+            id="MegaId-46634AA363590D04" name="Vérification concluante ?"/>
+        <bpmn:exclusiveGateway gatewayDirection="Unspecified"
+            id="MegaId-87C19552635F4C20" name=""/>
+        <bpmn:exclusiveGateway gatewayDirection="Unspecified"
+            id="MegaId-87C1988A635F4F01" name="Acheteur désigné d'office?"/>
+        <bpmn:exclusiveGateway gatewayDirection="Unspecified"
+            id="MegaId-87C1993B635F5082" name=""/>
+        <bpmn:exclusiveGateway gatewayDirection="Unspecified"
+            id="MegaId-CBE9D38B63457A21" name="Budget disponible?"/>
+        <bpmn:exclusiveGateway gatewayDirection="Unspecified"
+            id="MegaId-CBE9D5D963457CC8" name="Vérification concluante?"/>
+        <bpmn:exclusiveGateway gatewayDirection="Unspecified"
+            id="MegaId-CBE9D73263458004" name="Contrôle concluant?"/>
+        <bpmn:exclusiveGateway gatewayDirection="Unspecified"
+            id="MegaId-CBE9D7F1634581F3" name="Montant DA supérieur à 50000 DHS"/>
+        <bpmn:exclusiveGateway gatewayDirection="Unspecified"
+            id="MegaId-CBE9D9B0634583DB" name="DA approuvée?"/>
+        <bpmn:intermediateCatchEvent id="MegaId-4DA94E9763591126" name="Jour J">
+            <bpmn:timerEventDefinition/>
+        </bpmn:intermediateCatchEvent>
+        <bpmn:intermediateCatchEvent id="MegaId-87C18BE9635F4061" name="Attente de complément d'information">
+            <bpmn:messageEventDefinition/>
+        </bpmn:intermediateCatchEvent>
+        <bpmn:intermediateCatchEvent id="MegaId-87C18E1C635F44E4" name="Attente de complément d'information">
+            <bpmn:messageEventDefinition/>
+        </bpmn:intermediateCatchEvent>
+        <bpmn:intermediateCatchEvent id="MegaId-87C19319635F4A43" name="Attente de complément">
+            <bpmn:messageEventDefinition/>
+        </bpmn:intermediateCatchEvent>
+        <bpmn:intermediateCatchEvent id="MegaId-CBE9D55963457B47" name="Au plus tard 2 JO après réception du DA">
+            <bpmn:timerEventDefinition/>
+        </bpmn:intermediateCatchEvent>
+        <bpmn:intermediateCatchEvent id="MegaId-CBE9D65263457DE1" name="Au plus tard 2 JO après réception du DA">
+            <bpmn:timerEventDefinition/>
+        </bpmn:intermediateCatchEvent>
+        <bpmn:intermediateThrowEvent id="MegaId-87C18C1C635F4113" name="Réception du complément">
+            <bpmn:messageEventDefinition/>
+        </bpmn:intermediateThrowEvent>
+        <bpmn:intermediateThrowEvent id="MegaId-87C18FA4635F4687" name="Réception du complément">
+            <bpmn:messageEventDefinition/>
+        </bpmn:intermediateThrowEvent>
+        <bpmn:intermediateThrowEvent id="MegaId-87C1936B635F4AFD" name="Réception du complément">
+            <bpmn:messageEventDefinition/>
+        </bpmn:intermediateThrowEvent>
+        <bpmn:intermediateThrowEvent id="MegaId-87C19AD9635F5250" name="Attente de la DA">
+            <bpmn:messageEventDefinition/>
+        </bpmn:intermediateThrowEvent>
+        <bpmn:intermediateThrowEvent id="MegaId-87C19B99635F53BD" name="DA complétée">
+            <bpmn:messageEventDefinition/>
+        </bpmn:intermediateThrowEvent>
+        <bpmn:sequenceFlow id="MegaId-466349FD63590BF9" name=""
+            sourceRef="MegaId-CBE9D003634574DF" targetRef="MegaId-466349C363590B29"/>
+        <bpmn:sequenceFlow id="MegaId-46634AA863590D5E" name=""
+            sourceRef="MegaId-466349C363590B29" targetRef="MegaId-46634AA363590D04"/>
+        <bpmn:sequenceFlow id="MegaId-4DA94EA663591196" name="Non"
+            sourceRef="MegaId-4DA94E9763591126" targetRef="MegaId-4DA94E3B635910AC"/>
+        <bpmn:sequenceFlow id="MegaId-4DA94EFB6359131B" name="Oui"
+            sourceRef="MegaId-CBE9D9B0634583DB" targetRef="MegaId-CBE9D0246345770F"/>
+        <bpmn:sequenceFlow id="MegaId-4DA9543463591898" name=""
+            sourceRef="MegaId-4DA953C76359175B" targetRef="MegaId-4DA954256359182E"/>
+        <bpmn:sequenceFlow id="MegaId-87C18B8D635F3FE9" name="Non"
+            sourceRef="MegaId-46634AA363590D04" targetRef="MegaId-87C18B8C635F3F93"/>
+        <bpmn:sequenceFlow id="MegaId-87C18BE9635F40B0" name="Oui"
+            sourceRef="MegaId-87C18B8C635F3F93" targetRef="MegaId-87C18BE9635F4061"/>
+        <bpmn:sequenceFlow id="MegaId-87C18C1C635F4161" name=""
+            sourceRef="MegaId-87C18BE9635F4061" targetRef="MegaId-87C18C1C635F4113"/>
+        <bpmn:sequenceFlow id="MegaId-87C18C80635F4257" name=""
+            sourceRef="MegaId-87C18C1C635F4113" targetRef="MegaId-87C18C67635F41E4"/>
+        <bpmn:sequenceFlow id="MegaId-87C18CE1635F42CC" name="Oui"
+            sourceRef="MegaId-46634AA363590D04" targetRef="MegaId-87C18C67635F41E4"/>
+        <bpmn:sequenceFlow id="MegaId-87C18D10635F4333" name=""
+            sourceRef="MegaId-CBE9D55963457B47" targetRef="MegaId-CBE9D00C634575CF"/>
+        <bpmn:sequenceFlow id="MegaId-87C18D14635F4387" name=""
+            sourceRef="MegaId-87C18C67635F41E4" targetRef="MegaId-CBE9D55963457B47"/>
+        <bpmn:sequenceFlow id="MegaId-87C18D65635F4458" name="Non"
+            sourceRef="MegaId-CBE9D5D963457CC8" targetRef="MegaId-87C18D64635F4403"/>
+        <bpmn:sequenceFlow id="MegaId-87C18E1C635F4534" name="Oui"
+            sourceRef="MegaId-87C18D64635F4403" targetRef="MegaId-87C18E1C635F44E4"/>
+        <bpmn:sequenceFlow id="MegaId-87C18FA4635F46D5" name=""
+            sourceRef="MegaId-87C18E1C635F44E4" targetRef="MegaId-87C18FA4635F4687"/>
+        <bpmn:sequenceFlow id="MegaId-87C190D6635F4817" name=""
+            sourceRef="MegaId-87C18FA4635F4687" targetRef="MegaId-87C190B9635F4797"/>
+        <bpmn:sequenceFlow id="MegaId-87C19120635F48E0" name=""
+            sourceRef="MegaId-87C190B9635F4797" targetRef="MegaId-CBE9D65263457DE1"/>
+        <bpmn:sequenceFlow id="MegaId-87C19228635F49AA" name="Non"
+            sourceRef="MegaId-CBE9D73263458004" targetRef="MegaId-87C19228635F4953"/>
+        <bpmn:sequenceFlow id="MegaId-87C1931A635F4A93" name="Oui"
+            sourceRef="MegaId-87C19228635F4953" targetRef="MegaId-87C19319635F4A43"/>
+        <bpmn:sequenceFlow id="MegaId-87C1936B635F4B4B" name=""
+            sourceRef="MegaId-87C19319635F4A43" targetRef="MegaId-87C1936B635F4AFD"/>
+        <bpmn:sequenceFlow id="MegaId-87C1955B635F4C80" name=""
+            sourceRef="MegaId-87C1936B635F4AFD" targetRef="MegaId-87C19552635F4C20"/>
+        <bpmn:sequenceFlow id="MegaId-87C197B9635F4E57" name=""
+            sourceRef="MegaId-87C1979E635F4DD4" targetRef="MegaId-4DA94E9763591126"/>
+        <bpmn:sequenceFlow id="MegaId-87C19945635F50E2" name=""
+            sourceRef="MegaId-87C198C9635F4F71" targetRef="MegaId-87C1993B635F5082"/>
+        <bpmn:sequenceFlow id="MegaId-87C19949635F5136" name=""
+            sourceRef="MegaId-4DA94E3B635910AC" targetRef="MegaId-87C1993B635F5082"/>
+        <bpmn:sequenceFlow id="MegaId-87C19963635F518E" name=""
+            sourceRef="MegaId-87C1993B635F5082" targetRef="MegaId-4DA953C76359175B"/>
+        <bpmn:sequenceFlow id="MegaId-87C19B99635F540B" name=""
+            sourceRef="MegaId-87C19AD9635F5250" targetRef="MegaId-87C19B99635F53BD"/>
+        <bpmn:sequenceFlow id="MegaId-87C19BC1635F54DC" name=""
+            sourceRef="MegaId-87C19BB1635F5471" targetRef="MegaId-87C19AD9635F5250"/>
+        <bpmn:sequenceFlow id="MegaId-87C19C15635F5545" name=""
+            sourceRef="MegaId-4DA95D086359212C" targetRef="MegaId-87C19BB1635F5471"/>
+        <bpmn:sequenceFlow id="MegaId-B748BBEB635F7A55" name="Non"
+            sourceRef="MegaId-87C18B8C635F3F93" targetRef="MegaId-87C19BB1635F5471"/>
+        <bpmn:sequenceFlow id="MegaId-B748BBFD635F7B05" name="Non"
+            sourceRef="MegaId-87C18D64635F4403" targetRef="MegaId-87C19BB1635F5471"/>
+        <bpmn:sequenceFlow id="MegaId-B748BC10635F7BB3" name="Non"
+            sourceRef="MegaId-87C19228635F4953" targetRef="MegaId-87C19BB1635F5471"/>
+        <bpmn:sequenceFlow id="MegaId-B748BC36635F7C9B" name=""
+            sourceRef="MegaId-87C19B99635F53BD" targetRef="MegaId-CBE9D0006345748E"/>
+        <bpmn:sequenceFlow id="MegaId-B748BD56635F7DDE" name="Oui"
+            sourceRef="MegaId-CBE9D7F1634581F3" targetRef="MegaId-CBE9D9B0634583DB"/>
+        <bpmn:sequenceFlow id="MegaId-B748BD6B635F7E51" name=""
+            sourceRef="MegaId-CBE9D0246345770F" targetRef="MegaId-87C1979E635F4DD4"/>
+        <bpmn:sequenceFlow id="MegaId-B748C2C6635F8237" name="Oui"
+            sourceRef="MegaId-87C1988A635F4F01" targetRef="MegaId-87C198C9635F4F71"/>
+        <bpmn:sequenceFlow id="MegaId-CBE9D3626345796A" name=""
+            sourceRef="MegaId-CBE9CFA563457192" targetRef="MegaId-CBE9D0006345748E"/>
+        <bpmn:sequenceFlow id="MegaId-CBE9D38B63457A77" name=""
+            sourceRef="MegaId-CBE9D0006345748E" targetRef="MegaId-CBE9D38B63457A21"/>
+        <bpmn:sequenceFlow id="MegaId-CBE9D53363457AD8" name="Oui"
+            sourceRef="MegaId-CBE9D38B63457A21" targetRef="MegaId-CBE9D003634574DF"/>
+        <bpmn:sequenceFlow id="MegaId-CBE9D5D963457D1D" name=""
+            sourceRef="MegaId-CBE9D00C634575CF" targetRef="MegaId-CBE9D5D963457CC8"/>
+        <bpmn:sequenceFlow id="MegaId-CBE9D67E63457E67" name="Oui"
+            sourceRef="MegaId-CBE9D5D963457CC8" targetRef="MegaId-87C190B9635F4797"/>
+        <bpmn:sequenceFlow id="MegaId-CBE9D6FD63457F3C" name=""
+            sourceRef="MegaId-CBE9D65263457DE1" targetRef="MegaId-CBE9D017634576BF"/>
+        <bpmn:sequenceFlow id="MegaId-CBE9D7336345805B" name=""
+            sourceRef="MegaId-CBE9D017634576BF" targetRef="MegaId-CBE9D73263458004"/>
+        <bpmn:sequenceFlow id="MegaId-CBE9D86A634582A5" name="Oui"
+            sourceRef="MegaId-CBE9D73263458004" targetRef="MegaId-CBE9D7F1634581F3"/>
+        <bpmn:sequenceFlow id="MegaId-CBE9E16D63458A1E" name="Non"
+            sourceRef="MegaId-CBE9D9B0634583DB" targetRef="MegaId-4DA95D086359212C"/>
+        <bpmn:sequenceFlow id="MegaId-CBE9E22863458AA3" name="Non"
+            sourceRef="MegaId-CBE9D7F1634581F3" targetRef="MegaId-87C1979E635F4DD4"/>
+        <bpmn:sequenceFlow id="MegaId-CBE9E3EE63458D0F" name="Non"
+            sourceRef="MegaId-CBE9D38B63457A21" targetRef="MegaId-CBE9E3EA63458CAA"/>
+        <bpmn:sequenceFlow id="MegaId-CBE9E41263458DDB" name=""
+            sourceRef="MegaId-CBE9E3EA63458CAA" targetRef="MegaId-CBE9E40A63458D71"/>
+        <bpmn:startEvent id="MegaId-CBE9CFA563457192"
+            isInterrupting="true" name="Début"/>
+        <bpmn:task id="MegaId-4DA953C76359175B" name="9. Transformer la DA en Bon de Commande">
+            <bpmn:documentation>Après l'affectation de la DA, l'acheteur procède à la transformation de la DA en bon de commande.</bpmn:documentation>
+        </bpmn:task>
+        <bpmn:task id="MegaId-4DA95D086359212C" name="RETURN">
+            <bpmn:documentation>En cas de marché infructueux, l’acheteur retourne la DA au demandeur MOA. Le traitement se poursuit conformément à la tache 1.</bpmn:documentation>
+        </bpmn:task>
+        <bpmn:userTask id="MegaId-4DA94E3B635910AC" name="7. Affecter la DA à un acheteur">
+            <bpmn:documentation>Suite à l'approbation de la DA par le responsable habilité (DAL), le responsable de l'Entité Achats affecte ladite DA à un acheteur. A ce moment, la DA apparaît chez l'acheteur qui en est automatiquement notifié.</bpmn:documentation>
+        </bpmn:userTask>
+        <bpmn:userTask id="MegaId-87C198C9635F4F71" name="8. Affecter la DA à un acheteur">
+            <bpmn:documentation>Suite à l'approbation de la DA par le responsable habilité (DAL), et quand l'acheteur concerné est désigné d'office, le système affecte ladite DA à un acheteur. A ce moment, la DA apparaît chez l'acheteur qui en est automatiquement notifié.</bpmn:documentation>
+        </bpmn:userTask>
+        <bpmn:userTask id="MegaId-CBE9D0006345748E" name="1. Saisir la DA">
+            <bpmn:documentation>a) Le demandeur (MOA) choisit le catalogue de produits adéquat sur le SI Achat et y sélectionne le type de produit, ce qui ajoute ledit produit au « panier » ;&#xd;
+b) Il saisit au niveau de la ligne du Panier les données relatives à la DA :&#xd;
+- L'échéancier souhaité,&#xd;
+- L'estimation du coût de la prestation (en HT),&#xd;
+- La quantité demandée,&#xd;
+- Un commentaire destiné à l'acheteur en cas de besoin (explicitant l'opportunité de la prestation prévue (« justification ») si besoin).&#xd;
+c) Il vérifie la disponibilité budgétaire sur le SI (Oracle EBS) ;&#xd;
+&gt; En cas d'indisponibilité budgétaire, le SI (Oracle EBS) bloque l'opération, la saisie de la DA est abandonnée et lance la procédure "Transfert et rallonges".&#xd;
+d) Il attache un cahier des Prescriptions Techniques éventuellement et y mentionne le mode de passation souhaité (BC). Le besoin doit être explicite et exhaustif et doit être accompagné d'une proposition de critères d'évaluation des offres.&#xd;
+Si le demandeur doit recourir à un bon de commande direct, il doit élaborer une fiche de non recours (Cf. Canevas type de fiche de non recours), l'envoyer à la DAL, pour l'avis de conformité administrative, ensuite la soumettre à l'AC pour approbation.</bpmn:documentation>
+        </bpmn:userTask>
+        <bpmn:dataObject id="MegaId-46634A7063590C9B"
+            isCollection="false" name="DA"/>
+        <bpmn:dataObject id="MegaId-4DA94F0063591357"
+            isCollection="false" name="DA"/>
+        <bpmn:dataObject id="MegaId-4DA95A536359204E"
+            isCollection="false" name="DA"/>
+        <bpmn:dataObject id="MegaId-87C18E5E635F459D"
+            isCollection="false" name="DA"/>
+        <bpmn:dataObject id="MegaId-87C18EDD635F4601"
+            isCollection="false" name="DA"/>
+        <bpmn:dataObject id="MegaId-87C18FCC635F4730"
+            isCollection="false" name="DA"/>
+        <bpmn:dataObject id="MegaId-87C190D9635F4851"
+            isCollection="false" name="DA"/>
+        <bpmn:dataObject id="MegaId-87C19396635F4BB3"
+            isCollection="false" name="DA"/>
+        <bpmn:dataObject id="MegaId-87C1955F635F4CBA"
+            isCollection="false" name="DA"/>
+        <bpmn:dataObject id="MegaId-87C19714635F4D68"
+            isCollection="false" name="DA"/>
+        <bpmn:dataObject id="MegaId-87C19B04635F52F9"
+            isCollection="false" name="DA"/>
+        <bpmn:dataObject id="MegaId-87C19C18635F5581"
+            isCollection="false" name="DA"/>
+        <bpmn:dataObject id="MegaId-B748BBEF635F7A91"
+            isCollection="false" name="DA"/>
+        <bpmn:dataObject id="MegaId-B748BC00635F7B3F"
+            isCollection="false" name="DA"/>
+        <bpmn:dataObject id="MegaId-B748BC14635F7BED"
+            isCollection="false" name="DA"/>
+        <bpmn:dataObject id="MegaId-B748BC4B635F7CD9"
+            isCollection="false" name="DA"/>
+        <bpmn:dataObject id="MegaId-B748BDA7635F7EBF"
+            isCollection="false" name="DA"/>
+        <bpmn:dataObject id="MegaId-D3F1D4C8635B4625"
+            isCollection="false" name="DA"/>
+        <bpmn:dataObject id="MegaId-CBE9D64163457D8B"
+            isCollection="false" name="DA"/>
+        <bpmn:dataObject id="MegaId-D3F1D64E635B468F"
+            isCollection="false" name="DA"/>
+        <bpmn:dataObject id="MegaId-CBE9D69163457EA5"
+            isCollection="false" name="DA"/>
+        <bpmn:dataObject id="MegaId-CBE9D886634582E3"
+            isCollection="false" name="DA"/>
+        <bpmn:dataObject id="MegaId-CBE9E13F6345898F"
+            isCollection="false" name="DA"/>
+        <bpmn:dataObject id="MegaId-F1B5FF1663512009"
+            isCollection="false" name="DA"/>
+        <bpmn:dataObject id="MegaId-F1B5FF3763512065"
+            isCollection="false" name="DA"/>
+        <bpmn:dataObject id="MegaId-F1B5FF50635120C3"
+            isCollection="false" name="DA"/>
+        <bpmn:dataObjectReference
+            dataObjectRef="MegaId-46634A7063590C9B"
+            id="MegaId-46634A7063590C9BREF" name="DA[ En cours d'approbation RMOA]">
+            <bpmn:dataState name=" En cours d'approbation RMOA"/>
+        </bpmn:dataObjectReference>
+        <bpmn:dataObjectReference
+            dataObjectRef="MegaId-4DA94F0063591357"
+            id="MegaId-4DA94F0063591357REF" name="DA[approuvée]">
+            <bpmn:dataState name="approuvée"/>
+        </bpmn:dataObjectReference>
+        <bpmn:dataObjectReference
+            dataObjectRef="MegaId-4DA95A536359204E"
+            id="MegaId-4DA95A536359204EREF" name="DA[rejetée]">
+            <bpmn:dataState name="rejetée"/>
+        </bpmn:dataObjectReference>
+        <bpmn:dataObjectReference
+            dataObjectRef="MegaId-87C18E5E635F459D"
+            id="MegaId-87C18E5E635F459DREF" name="DA[en cours d'approbation]">
+            <bpmn:dataState name="en cours d'approbation"/>
+        </bpmn:dataObjectReference>
+        <bpmn:dataObjectReference
+            dataObjectRef="MegaId-87C18EDD635F4601"
+            id="MegaId-87C18EDD635F4601REF" name="DA[En attente de complément]">
+            <bpmn:dataState name="En attente de complément"/>
+        </bpmn:dataObjectReference>
+        <bpmn:dataObjectReference
+            dataObjectRef="MegaId-87C18FCC635F4730"
+            id="MegaId-87C18FCC635F4730REF" name="DA[En attente de complément]">
+            <bpmn:dataState name="En attente de complément"/>
+        </bpmn:dataObjectReference>
+        <bpmn:dataObjectReference
+            dataObjectRef="MegaId-87C190D9635F4851"
+            id="MegaId-87C190D9635F4851REF" name="DA[en cours d'approbation]">
+            <bpmn:dataState name="en cours d'approbation"/>
+        </bpmn:dataObjectReference>
+        <bpmn:dataObjectReference
+            dataObjectRef="MegaId-87C19396635F4BB3"
+            id="MegaId-87C19396635F4BB3REF" name="DA[En attente de complément]">
+            <bpmn:dataState name="En attente de complément"/>
+        </bpmn:dataObjectReference>
+        <bpmn:dataObjectReference
+            dataObjectRef="MegaId-87C1955F635F4CBA"
+            id="MegaId-87C1955F635F4CBAREF" name="DA[En cours d'approbation]">
+            <bpmn:dataState name="En cours d'approbation"/>
+        </bpmn:dataObjectReference>
+        <bpmn:dataObjectReference
+            dataObjectRef="MegaId-87C19714635F4D68"
+            id="MegaId-87C19714635F4D68REF" name="DA[approuvée]">
+            <bpmn:dataState name="approuvée"/>
+        </bpmn:dataObjectReference>
+        <bpmn:dataObjectReference
+            dataObjectRef="MegaId-87C19B04635F52F9"
+            id="MegaId-87C19B04635F52F9REF" name="DA[retire]">
+            <bpmn:dataState name="retire"/>
+        </bpmn:dataObjectReference>
+        <bpmn:dataObjectReference
+            dataObjectRef="MegaId-87C19C18635F5581"
+            id="MegaId-87C19C18635F5581REF" name="DA[retournée]">
+            <bpmn:dataState name="retournée"/>
+        </bpmn:dataObjectReference>
+        <bpmn:dataObjectReference
+            dataObjectRef="MegaId-B748BBEF635F7A91"
+            id="MegaId-B748BBEF635F7A91REF" name="DA[rejetée]">
+            <bpmn:dataState name="rejetée"/>
+        </bpmn:dataObjectReference>
+        <bpmn:dataObjectReference
+            dataObjectRef="MegaId-B748BC00635F7B3F"
+            id="MegaId-B748BC00635F7B3FREF" name="DA[rejetée]">
+            <bpmn:dataState name="rejetée"/>
+        </bpmn:dataObjectReference>
+        <bpmn:dataObjectReference
+            dataObjectRef="MegaId-B748BC14635F7BED"
+            id="MegaId-B748BC14635F7BEDREF" name="DA[rejetée]">
+            <bpmn:dataState name="rejetée"/>
+        </bpmn:dataObjectReference>
+        <bpmn:dataObjectReference
+            dataObjectRef="MegaId-B748BC4B635F7CD9"
+            id="MegaId-B748BC4B635F7CD9REF" name="DA[complétée]">
+            <bpmn:dataState name="complétée"/>
+        </bpmn:dataObjectReference>
+        <bpmn:dataObjectReference
+            dataObjectRef="MegaId-B748BDA7635F7EBF"
+            id="MegaId-B748BDA7635F7EBFREF" name="DA[approuvée]">
+            <bpmn:dataState name="approuvée"/>
+        </bpmn:dataObjectReference>
+        <bpmn:dataObjectReference
+            dataObjectRef="MegaId-D3F1D4C8635B4625"
+            id="MegaId-D3F1D4C8635B4625REF" name="DA[rejetée]">
+            <bpmn:dataState name="rejetée"/>
+        </bpmn:dataObjectReference>
+        <bpmn:dataObjectReference
+            dataObjectRef="MegaId-CBE9D64163457D8B"
+            id="MegaId-CBE9D64163457D8BREF" name="DA[validé]">
+            <bpmn:dataState name="validé"/>
+        </bpmn:dataObjectReference>
+        <bpmn:dataObjectReference
+            dataObjectRef="MegaId-D3F1D64E635B468F"
+            id="MegaId-D3F1D64E635B468FREF" name="DA[retournée]">
+            <bpmn:dataState name="retournée"/>
+        </bpmn:dataObjectReference>
+        <bpmn:dataObjectReference
+            dataObjectRef="MegaId-CBE9D69163457EA5"
+            id="MegaId-CBE9D69163457EA5REF" name="DA[contrôlée EA]">
+            <bpmn:dataState name="contrôlée EA"/>
+        </bpmn:dataObjectReference>
+        <bpmn:dataObjectReference
+            dataObjectRef="MegaId-CBE9D886634582E3"
+            id="MegaId-CBE9D886634582E3REF" name="DA[contrôlée ECO]">
+            <bpmn:dataState name="contrôlée ECO"/>
+        </bpmn:dataObjectReference>
+        <bpmn:dataObjectReference
+            dataObjectRef="MegaId-CBE9E13F6345898F"
+            id="MegaId-CBE9E13F6345898FREF" name="DA[approuvée]">
+            <bpmn:dataState name="approuvée"/>
+        </bpmn:dataObjectReference>
+        <bpmn:dataObjectReference
+            dataObjectRef="MegaId-F1B5FF1663512009"
+            id="MegaId-F1B5FF1663512009REF" name="DA[rejetée]">
+            <bpmn:dataState name="rejetée"/>
+        </bpmn:dataObjectReference>
+        <bpmn:dataObjectReference
+            dataObjectRef="MegaId-F1B5FF3763512065"
+            id="MegaId-F1B5FF3763512065REF" name="DA[rejetée]">
+            <bpmn:dataState name="rejetée"/>
+        </bpmn:dataObjectReference>
+        <bpmn:dataObjectReference
+            dataObjectRef="MegaId-F1B5FF50635120C3"
+            id="MegaId-F1B5FF50635120C3REF" name="DA[rejetée]">
+            <bpmn:dataState name="rejetée"/>
+        </bpmn:dataObjectReference>
+    </bpmn:process>
+    <bpmn:process id="MegaId-C5D7D17C6329468E" name="Transfert et rallonges"/>
+    <bpmndi:BPMNDiagram id="MegaId-CBE9CFA4634570BC" name="Diagramme de processus organisationnel-8">
+        <bpmndi:BPMNPlane bpmnElement="MegaId-27CF38E163619AC4COLLAB">
+            <bpmndi:BPMNShape bpmnElement="MegaId-CBE9CF956345702DPOOL"
+                id="MegaId-CBE9CFA4634570BC-1AE0352100000000"
+                isExpanded="true" isHorizontal="false">
+                <dc:Bounds height="1708" width="2931" x="38" y="110"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="MegaId-CBE9CFB1634572F3"
+                id="MegaId-CBE9CFA4634570BC-4424352100000000"
+                isExpanded="true" isHorizontal="true">
+                <dc:Bounds height="156" width="2888" x="73" y="1384"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="MegaId-CBE9CFCA6345741F"
+                id="MegaId-CBE9CFA4634570BC-8DB0351F00000000"
+                isExpanded="true" isHorizontal="true">
+                <dc:Bounds height="151" width="2887" x="73" y="1232"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="MegaId-CBE9CFC9634573C2"
+                id="MegaId-CBE9CFA4634570BC-9CE4351F00000000"
+                isExpanded="true" isHorizontal="true">
+                <dc:Bounds height="293" width="2885" x="73" y="938"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="MegaId-CBE9CFB16345734E"
+                id="MegaId-CBE9CFA4634570BC-AC18351F00000000"
+                isExpanded="true" isHorizontal="true">
+                <dc:Bounds height="255" width="2888" x="72" y="683"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="MegaId-CBE9CFB0634572A4"
+                id="MegaId-CBE9CFA4634570BC-BB4C351F00000000"
+                isExpanded="true" isHorizontal="true">
+                <dc:Bounds height="280" width="2886" x="73" y="178"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="MegaId-CBE9CFA563457192" id="MegaId-CBE9CFA4634570BC-9500317700000000">
+                <dc:Bounds height="20" width="20" x="197" y="252"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="MegaId-CBE9D0006345748E" id="MegaId-CBE9CFA4634570BC-68D4374500000000">
+                <dc:Bounds height="53" width="104" x="278" y="232"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="MegaId-CBE9D003634574DF" id="MegaId-CBE9CFA4634570BC-AB38360900000000">
+                <dc:Bounds height="89" width="118" x="539" y="325"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="MegaId-CBE9D00C634575CF" id="MegaId-CBE9CFA4634570BC-C9A0360900000000">
+                <dc:Bounds height="61" width="90" x="956" y="716"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="MegaId-CBE9D017634576BF" id="MegaId-CBE9CFA4634570BC-DD2C360900000000">
+                <dc:Bounds height="61" width="90" x="1414" y="974"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="MegaId-CBE9D0246345770F" id="MegaId-CBE9CFA4634570BC-513834F800000000">
+                <dc:Bounds height="75" width="90" x="1983" y="1300"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="MegaId-CBE9D38B63457A21" id="MegaId-CBE9CFA4634570BC-51A4341C00000000">
+                <dc:Bounds height="30" width="29" x="462" y="249"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="MegaId-CBE9D55963457B47" id="MegaId-CBE9CFA4634570BC-AA5C341400000000">
+                <dc:Bounds height="20" width="20" x="877" y="737"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="MegaId-CBE9D5D963457CC8" id="MegaId-CBE9CFA4634570BC-4D70358D00000000">
+                <dc:Bounds height="30" width="29" x="1104" y="732"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="MegaId-CBE9D65263457DE1" id="MegaId-CBE9CFA4634570BC-FDD0342E00000000">
+                <dc:Bounds height="20" width="20" x="1333" y="992"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="MegaId-CBE9D73263458004" id="MegaId-CBE9CFA4634570BC-B518341D00000000">
+                <dc:Bounds height="30" width="29" x="1573" y="991"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="MegaId-CBE9D7F1634581F3" id="MegaId-CBE9CFA4634570BC-DE5C341D00000000">
+                <dc:Bounds height="30" width="29" x="2000" y="1116"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="MegaId-CBE9D9B0634583DB" id="MegaId-CBE9CFA4634570BC-8A7C35BF00000000">
+                <dc:Bounds height="30" width="29" x="2000" y="1250"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="MegaId-CBE9E3EA63458CAA" id="MegaId-CBE9CFA4634570BC-3DB0351900000000">
+                <dc:Bounds height="70" width="90" x="553" y="227"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="MegaId-CBE9E40A63458D71" id="MegaId-CBE9CFA4634570BC-9A84352200000000">
+                <dc:Bounds height="20" width="20" x="688" y="249"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="MegaId-4663496A63590AB0"
+                id="MegaId-CBE9CFA4634570BC-F4E435C800000000"
+                isExpanded="true" isHorizontal="true">
+                <dc:Bounds height="224" width="2888" x="72" y="458"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="MegaId-466349C363590B29" id="MegaId-CBE9CFA4634570BC-0CC835C900000000">
+                <dc:Bounds height="61" width="90" x="546" y="482"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="MegaId-46634AA363590D04" id="MegaId-CBE9CFA4634570BC-6184372A00000000">
+                <dc:Bounds height="30" width="30" x="696" y="493"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="MegaId-4DA94E3B635910AC" id="MegaId-CBE9CFA4634570BC-8AC8372A00000000">
+                <dc:Bounds height="62" width="90" x="2405" y="1414"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="MegaId-4DA94E9763591126" id="MegaId-CBE9CFA4634570BC-EF4835D400000000">
+                <dc:Bounds height="20" width="20" x="2249" y="1427"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="MegaId-4DA951A8635914E3"
+                id="MegaId-CBE9CFA4634570BC-150835B000000000"
+                isExpanded="true" isHorizontal="true">
+                <dc:Bounds height="158" width="2888" x="73" y="1641"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="MegaId-4DA9518D6359149C"
+                id="MegaId-CBE9CFA4634570BC-243C35B000000000"
+                isExpanded="true" isHorizontal="true">
+                <dc:Bounds height="101" width="2888" x="73" y="1539"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="MegaId-4DA953C76359175B" id="MegaId-CBE9CFA4634570BC-017C34AD00000000">
+                <dc:Bounds height="76" width="90" x="2627" y="1660"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="MegaId-4DA954256359182E" id="MegaId-CBE9CFA4634570BC-150834AD00000000">
+                <dc:Bounds height="20" width="20" x="2767" y="1689"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="MegaId-4DA95D086359212C" id="MegaId-CBE9CFA4634570BC-F19436DD00000000">
+                <dc:Bounds height="48" width="133" x="2646" y="1416"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="MegaId-87C18B8C635F3F93" id="MegaId-CBE9CFA4634570BC-052036DE00000000">
+                <dc:Bounds height="30" width="30" x="806" y="494"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="MegaId-87C18BE9635F4061" id="MegaId-CBE9CFA4634570BC-3DBC36DF00000000">
+                <dc:Bounds height="20" width="20" x="811" y="553"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="MegaId-87C18C1C635F4113" id="MegaId-CBE9CFA4634570BC-D59436DF00000000">
+                <dc:Bounds height="20" width="20" x="812" y="639"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="MegaId-87C18C67635F41E4" id="MegaId-CBE9CFA4634570BC-691436E000000000">
+                <dc:Bounds height="30" width="30" x="806" y="733"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="MegaId-87C18D64635F4403" id="MegaId-CBE9CFA4634570BC-7B8436E300000000">
+                <dc:Bounds height="30" width="30" x="1218" y="732"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="MegaId-87C18E1C635F44E4" id="MegaId-CBE9CFA4634570BC-E41C36E300000000">
+                <dc:Bounds height="20" width="20" x="1226" y="789"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="MegaId-87C18FA4635F4687" id="MegaId-CBE9CFA4634570BC-4FB036E400000000">
+                <dc:Bounds height="20" width="20" x="1229" y="869"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="MegaId-87C190B9635F4797" id="MegaId-CBE9CFA4634570BC-7B2036E400000000">
+                <dc:Bounds height="30" width="30" x="1224" y="986"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="MegaId-87C19228635F4953" id="MegaId-CBE9CFA4634570BC-800436E700000000">
+                <dc:Bounds height="30" width="30" x="1673" y="991"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="MegaId-87C19319635F4A43" id="MegaId-CBE9CFA4634570BC-E96C36E700000000">
+                <dc:Bounds height="20" width="20" x="1776" y="999"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="MegaId-87C1936B635F4AFD" id="MegaId-CBE9CFA4634570BC-14F836E800000000">
+                <dc:Bounds height="20" width="20" x="1909" y="996"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="MegaId-87C19552635F4C20" id="MegaId-CBE9CFA4634570BC-406836E800000000">
+                <dc:Bounds height="30" width="30" x="1906" y="1120"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="MegaId-87C1979E635F4DD4" id="MegaId-CBE9CFA4634570BC-A90036E800000000">
+                <dc:Bounds height="30" width="30" x="2181" y="1424"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="MegaId-87C1988A635F4F01" id="MegaId-CBE9CFA4634570BC-126836E900000000">
+                <dc:Bounds height="30" width="30" x="2314" y="1423"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="MegaId-87C198C9635F4F71" id="MegaId-CBE9CFA4634570BC-1F7036E900000000">
+                <dc:Bounds height="62" width="90" x="2405" y="1559"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="MegaId-87C1993B635F5082" id="MegaId-CBE9CFA4634570BC-423036E900000000">
+                <dc:Bounds height="30" width="30" x="2558" y="1682"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="MegaId-87C19AD9635F5250" id="MegaId-CBE9CFA4634570BC-636436EA00000000">
+                <dc:Bounds height="20" width="20" x="2777" y="332"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="MegaId-87C19B99635F53BD" id="MegaId-CBE9CFA4634570BC-729836EA00000000">
+                <dc:Bounds height="20" width="20" x="2892" y="332"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="MegaId-87C19BB1635F5471" id="MegaId-CBE9CFA4634570BC-DD5C36EA00000000">
+                <dc:Bounds height="30" width="30" x="2696" y="329"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge bpmnElement="MegaId-CBE9D3626345796A"
+                id="MegaId-CBE9CFA4634570BC-66F034F800000000"
+                sourceElement="MegaId-CBE9CFA4634570BC-9500317700000000" targetElement="MegaId-CBE9CFA4634570BC-68D4374500000000">
+                <di:waypoint x="208" y="264"/>
+                <di:waypoint x="331" y="264"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="MegaId-CBE9D38B63457A77"
+                id="MegaId-CBE9CFA4634570BC-6BB4341C00000000"
+                sourceElement="MegaId-CBE9CFA4634570BC-68D4374500000000" targetElement="MegaId-CBE9CFA4634570BC-51A4341C00000000">
+                <di:waypoint x="331" y="265"/>
+                <di:waypoint x="477" y="265"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="MegaId-CBE9D53363457AD8"
+                id="MegaId-CBE9CFA4634570BC-904C341400000000"
+                sourceElement="MegaId-CBE9CFA4634570BC-51A4341C00000000" targetElement="MegaId-CBE9CFA4634570BC-AB38360900000000">
+                <di:waypoint x="478" y="265"/>
+                <di:waypoint x="478" y="370"/>
+                <di:waypoint x="598" y="370"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="MegaId-CBE9D5D963457D1D"
+                id="MegaId-CBE9CFA4634570BC-5CA4358D00000000"
+                sourceElement="MegaId-CBE9CFA4634570BC-C9A0360900000000" targetElement="MegaId-CBE9CFA4634570BC-4D70358D00000000">
+                <di:waypoint x="1002" y="747"/>
+                <di:waypoint x="1119" y="747"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="MegaId-CBE9D67E63457E67"
+                id="MegaId-CBE9CFA4634570BC-0F30342F00000000"
+                sourceElement="MegaId-CBE9CFA4634570BC-4D70358D00000000" targetElement="MegaId-CBE9CFA4634570BC-7B2036E400000000">
+                <di:waypoint x="1115" y="747"/>
+                <di:waypoint x="1115" y="1002"/>
+                <di:waypoint x="1239" y="1002"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="MegaId-CBE9D6FD63457F3C"
+                id="MegaId-CBE9CFA4634570BC-2B6C342F00000000"
+                sourceElement="MegaId-CBE9CFA4634570BC-FDD0342E00000000" targetElement="MegaId-CBE9CFA4634570BC-DD2C360900000000">
+                <di:waypoint x="1343" y="1005"/>
+                <di:waypoint x="1460" y="1005"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="MegaId-CBE9D7336345805B"
+                id="MegaId-CBE9CFA4634570BC-C44C341D00000000"
+                sourceElement="MegaId-CBE9CFA4634570BC-DD2C360900000000" targetElement="MegaId-CBE9CFA4634570BC-B518341D00000000">
+                <di:waypoint x="1460" y="1006"/>
+                <di:waypoint x="1588" y="1006"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="MegaId-CBE9D86A634582A5"
+                id="MegaId-CBE9CFA4634570BC-706C35BF00000000"
+                sourceElement="MegaId-CBE9CFA4634570BC-B518341D00000000" targetElement="MegaId-CBE9CFA4634570BC-DE5C341D00000000">
+                <di:waypoint x="1588" y="1006"/>
+                <di:waypoint x="1588" y="1132"/>
+                <di:waypoint x="2015" y="1132"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="MegaId-CBE9E16D63458A1E"
+                id="MegaId-CBE9CFA4634570BC-99B035BF00000000"
+                sourceElement="MegaId-CBE9CFA4634570BC-8A7C35BF00000000" targetElement="MegaId-CBE9CFA4634570BC-F19436DD00000000">
+                <di:waypoint x="2015" y="1265"/>
+                <di:waypoint x="2589" y="1265"/>
+                <di:waypoint x="2589" y="1440"/>
+                <di:waypoint x="2712" y="1440"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="MegaId-CBE9E22863458AA3"
+                id="MegaId-CBE9CFA4634570BC-23A0351900000000"
+                sourceElement="MegaId-CBE9CFA4634570BC-DE5C341D00000000" targetElement="MegaId-CBE9CFA4634570BC-A90036E800000000">
+                <di:waypoint x="2015" y="1132"/>
+                <di:waypoint x="2196" y="1132"/>
+                <di:waypoint x="2196" y="1439"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="MegaId-CBE9E3EE63458D0F"
+                id="MegaId-CBE9CFA4634570BC-E95835C500000000"
+                sourceElement="MegaId-CBE9CFA4634570BC-51A4341C00000000" targetElement="MegaId-CBE9CFA4634570BC-3DB0351900000000">
+                <di:waypoint x="477" y="262"/>
+                <di:waypoint x="598" y="262"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="MegaId-CBE9E41263458DDB"
+                id="MegaId-CBE9CFA4634570BC-B6C0352200000000"
+                sourceElement="MegaId-CBE9CFA4634570BC-3DB0351900000000" targetElement="MegaId-CBE9CFA4634570BC-9A84352200000000">
+                <di:waypoint x="598" y="259"/>
+                <di:waypoint x="698" y="259"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="MegaId-466349FD63590BF9"
+                id="MegaId-CBE9CFA4634570BC-228035C900000000"
+                sourceElement="MegaId-CBE9CFA4634570BC-AB38360900000000" targetElement="MegaId-CBE9CFA4634570BC-0CC835C900000000">
+                <di:waypoint x="591" y="370"/>
+                <di:waypoint x="591" y="513"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="MegaId-46634AA863590D5E"
+                id="MegaId-CBE9CFA4634570BC-70B8372A00000000"
+                sourceElement="MegaId-CBE9CFA4634570BC-0CC835C900000000" targetElement="MegaId-CBE9CFA4634570BC-6184372A00000000">
+                <di:waypoint x="592" y="509"/>
+                <di:waypoint x="711" y="509"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="MegaId-4DA94EA663591196"
+                id="MegaId-CBE9CFA4634570BC-00A835D500000000"
+                sourceElement="MegaId-CBE9CFA4634570BC-EF4835D400000000" targetElement="MegaId-CBE9CFA4634570BC-8AC8372A00000000">
+                <di:waypoint x="2259" y="1439"/>
+                <di:waypoint x="2451" y="1439"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="MegaId-4DA94EFB6359131B"
+                id="MegaId-CBE9CFA4634570BC-FD2435AF00000000"
+                sourceElement="MegaId-CBE9CFA4634570BC-8A7C35BF00000000" targetElement="MegaId-CBE9CFA4634570BC-513834F800000000">
+                <di:waypoint x="2017" y="1265"/>
+                <di:waypoint x="2017" y="1338"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="MegaId-4DA9543463591898"
+                id="MegaId-CBE9CFA4634570BC-266834AD00000000"
+                sourceElement="MegaId-CBE9CFA4634570BC-017C34AD00000000" targetElement="MegaId-CBE9CFA4634570BC-150834AD00000000">
+                <di:waypoint x="2673" y="1700"/>
+                <di:waypoint x="2777" y="1700"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="MegaId-87C18B8D635F3FE9"
+                id="MegaId-CBE9CFA4634570BC-23AC36DF00000000"
+                sourceElement="MegaId-CBE9CFA4634570BC-6184372A00000000" targetElement="MegaId-CBE9CFA4634570BC-052036DE00000000">
+                <di:waypoint x="711" y="509"/>
+                <di:waypoint x="821" y="509"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="MegaId-87C18BE9635F40B0"
+                id="MegaId-CBE9CFA4634570BC-BB8436DF00000000"
+                sourceElement="MegaId-CBE9CFA4634570BC-052036DE00000000" targetElement="MegaId-CBE9CFA4634570BC-3DBC36DF00000000">
+                <di:waypoint x="821" y="509"/>
+                <di:waypoint x="821" y="563"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="MegaId-87C18C1C635F4161"
+                id="MegaId-CBE9CFA4634570BC-4F0436E000000000"
+                sourceElement="MegaId-CBE9CFA4634570BC-3DBC36DF00000000" targetElement="MegaId-CBE9CFA4634570BC-D59436DF00000000">
+                <di:waypoint x="821" y="563"/>
+                <di:waypoint x="821" y="649"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="MegaId-87C18C80635F4257"
+                id="MegaId-CBE9CFA4634570BC-784836E000000000"
+                sourceElement="MegaId-CBE9CFA4634570BC-D59436DF00000000" targetElement="MegaId-CBE9CFA4634570BC-691436E000000000">
+                <di:waypoint x="822" y="649"/>
+                <di:waypoint x="822" y="749"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="MegaId-87C18CE1635F42CC"
+                id="MegaId-CBE9CFA4634570BC-14A836E100000000"
+                sourceElement="MegaId-CBE9CFA4634570BC-6184372A00000000" targetElement="MegaId-CBE9CFA4634570BC-691436E000000000">
+                <di:waypoint x="711" y="509"/>
+                <di:waypoint x="711" y="749"/>
+                <di:waypoint x="822" y="749"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="MegaId-87C18D10635F4333"
+                id="MegaId-CBE9CFA4634570BC-30E436E100000000"
+                sourceElement="MegaId-CBE9CFA4634570BC-AA5C341400000000" targetElement="MegaId-CBE9CFA4634570BC-C9A0360900000000">
+                <di:waypoint x="887" y="747"/>
+                <di:waypoint x="1002" y="747"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="MegaId-87C18D14635F4387"
+                id="MegaId-CBE9CFA4634570BC-617436E300000000"
+                sourceElement="MegaId-CBE9CFA4634570BC-691436E000000000" targetElement="MegaId-CBE9CFA4634570BC-AA5C341400000000">
+                <di:waypoint x="822" y="747"/>
+                <di:waypoint x="887" y="747"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="MegaId-87C18D65635F4458"
+                id="MegaId-CBE9CFA4634570BC-8AB836E300000000"
+                sourceElement="MegaId-CBE9CFA4634570BC-4D70358D00000000" targetElement="MegaId-CBE9CFA4634570BC-7B8436E300000000">
+                <di:waypoint x="1119" y="747"/>
+                <di:waypoint x="1233" y="747"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="MegaId-87C18E1C635F4534"
+                id="MegaId-CBE9CFA4634570BC-F57C36E300000000"
+                sourceElement="MegaId-CBE9CFA4634570BC-7B8436E300000000" targetElement="MegaId-CBE9CFA4634570BC-E41C36E300000000">
+                <di:waypoint x="1233" y="747"/>
+                <di:waypoint x="1233" y="799"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="MegaId-87C18FA4635F46D5"
+                id="MegaId-CBE9CFA4634570BC-611036E400000000"
+                sourceElement="MegaId-CBE9CFA4634570BC-E41C36E300000000" targetElement="MegaId-CBE9CFA4634570BC-4FB036E400000000">
+                <di:waypoint x="1236" y="799"/>
+                <di:waypoint x="1236" y="879"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="MegaId-87C190D6635F4817"
+                id="MegaId-CBE9CFA4634570BC-8A5436E400000000"
+                sourceElement="MegaId-CBE9CFA4634570BC-4FB036E400000000" targetElement="MegaId-CBE9CFA4634570BC-7B2036E400000000">
+                <di:waypoint x="1239" y="879"/>
+                <di:waypoint x="1239" y="1001"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="MegaId-87C19120635F48E0"
+                id="MegaId-CBE9CFA4634570BC-65F436E700000000"
+                sourceElement="MegaId-CBE9CFA4634570BC-7B2036E400000000" targetElement="MegaId-CBE9CFA4634570BC-FDD0342E00000000">
+                <di:waypoint x="1239" y="1002"/>
+                <di:waypoint x="1343" y="1002"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="MegaId-87C19228635F49AA"
+                id="MegaId-CBE9CFA4634570BC-CF5C36E700000000"
+                sourceElement="MegaId-CBE9CFA4634570BC-B518341D00000000" targetElement="MegaId-CBE9CFA4634570BC-800436E700000000">
+                <di:waypoint x="1588" y="1006"/>
+                <di:waypoint x="1688" y="1006"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="MegaId-87C1931A635F4A93"
+                id="MegaId-CBE9CFA4634570BC-FACC36E700000000"
+                sourceElement="MegaId-CBE9CFA4634570BC-800436E700000000" targetElement="MegaId-CBE9CFA4634570BC-E96C36E700000000">
+                <di:waypoint x="1689" y="1009"/>
+                <di:waypoint x="1786" y="1009"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="MegaId-87C1936B635F4B4B"
+                id="MegaId-CBE9CFA4634570BC-265836E800000000"
+                sourceElement="MegaId-CBE9CFA4634570BC-E96C36E700000000" targetElement="MegaId-CBE9CFA4634570BC-14F836E800000000">
+                <di:waypoint x="1786" y="1007"/>
+                <di:waypoint x="1919" y="1007"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="MegaId-87C1955B635F4C80"
+                id="MegaId-CBE9CFA4634570BC-8EF036E800000000"
+                sourceElement="MegaId-CBE9CFA4634570BC-14F836E800000000" targetElement="MegaId-CBE9CFA4634570BC-406836E800000000">
+                <di:waypoint x="1922" y="1006"/>
+                <di:waypoint x="1922" y="1135"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="MegaId-87C197B9635F4E57"
+                id="MegaId-CBE9CFA4634570BC-B83436E800000000"
+                sourceElement="MegaId-CBE9CFA4634570BC-A90036E800000000" targetElement="MegaId-CBE9CFA4634570BC-EF4835D400000000">
+                <di:waypoint x="2196" y="1439"/>
+                <di:waypoint x="2259" y="1439"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="MegaId-87C19945635F50E2"
+                id="MegaId-CBE9CFA4634570BC-10C036EA00000000"
+                sourceElement="MegaId-CBE9CFA4634570BC-1F7036E900000000" targetElement="MegaId-CBE9CFA4634570BC-423036E900000000">
+                <di:waypoint x="2451" y="1590"/>
+                <di:waypoint x="2451" y="1697"/>
+                <di:waypoint x="2573" y="1697"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="MegaId-87C19949635F5136"
+                id="MegaId-CBE9CFA4634570BC-2CFC36EA00000000"
+                sourceElement="MegaId-CBE9CFA4634570BC-8AC8372A00000000" targetElement="MegaId-CBE9CFA4634570BC-423036E900000000">
+                <di:waypoint x="2451" y="1445"/>
+                <di:waypoint x="2573" y="1445"/>
+                <di:waypoint x="2573" y="1697"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="MegaId-87C19963635F518E"
+                id="MegaId-CBE9CFA4634570BC-495436EA00000000"
+                sourceElement="MegaId-CBE9CFA4634570BC-423036E900000000" targetElement="MegaId-CBE9CFA4634570BC-017C34AD00000000">
+                <di:waypoint x="2573" y="1698"/>
+                <di:waypoint x="2673" y="1698"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="MegaId-87C19B99635F540B"
+                id="MegaId-CBE9CFA4634570BC-C34C36EA00000000"
+                sourceElement="MegaId-CBE9CFA4634570BC-636436EA00000000" targetElement="MegaId-CBE9CFA4634570BC-729836EA00000000">
+                <di:waypoint x="2787" y="342"/>
+                <di:waypoint x="2902" y="342"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="MegaId-87C19BC1635F54DC"
+                id="MegaId-CBE9CFA4634570BC-EC9036EA00000000"
+                sourceElement="MegaId-CBE9CFA4634570BC-DD5C36EA00000000" targetElement="MegaId-CBE9CFA4634570BC-636436EA00000000">
+                <di:waypoint x="2711" y="342"/>
+                <di:waypoint x="2787" y="342"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="MegaId-87C19C15635F5545"
+                id="MegaId-CBE9CFA4634570BC-08E836EB00000000"
+                sourceElement="MegaId-CBE9CFA4634570BC-F19436DD00000000" targetElement="MegaId-CBE9CFA4634570BC-DD5C36EA00000000">
+                <di:waypoint x="2711" y="1440"/>
+                <di:waypoint x="2711" y="344"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="MegaId-B748BBEB635F7A55"
+                id="MegaId-CBE9CFA4634570BC-252436EB00000000"
+                sourceElement="MegaId-CBE9CFA4634570BC-052036DE00000000" targetElement="MegaId-CBE9CFA4634570BC-DD5C36EA00000000">
+                <di:waypoint x="821" y="509"/>
+                <di:waypoint x="1115" y="509"/>
+                <di:waypoint x="1115" y="344"/>
+                <di:waypoint x="2711" y="344"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="MegaId-B748BBFD635F7B05"
+                id="MegaId-CBE9CFA4634570BC-417C36EB00000000"
+                sourceElement="MegaId-CBE9CFA4634570BC-7B8436E300000000" targetElement="MegaId-CBE9CFA4634570BC-DD5C36EA00000000">
+                <di:waypoint x="1233" y="747"/>
+                <di:waypoint x="1475" y="747"/>
+                <di:waypoint x="1475" y="345"/>
+                <di:waypoint x="2711" y="345"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="MegaId-B748BC10635F7BB3"
+                id="MegaId-CBE9CFA4634570BC-5DB836EB00000000"
+                sourceElement="MegaId-CBE9CFA4634570BC-800436E700000000" targetElement="MegaId-CBE9CFA4634570BC-DD5C36EA00000000">
+                <di:waypoint x="1688" y="1006"/>
+                <di:waypoint x="1688" y="344"/>
+                <di:waypoint x="2711" y="344"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="MegaId-B748BC36635F7C9B"
+                id="MegaId-CBE9CFA4634570BC-79F436EB00000000"
+                sourceElement="MegaId-CBE9CFA4634570BC-729836EA00000000" targetElement="MegaId-CBE9CFA4634570BC-68D4374500000000">
+                <di:waypoint x="2902" y="342"/>
+                <di:waypoint x="2902" y="198"/>
+                <di:waypoint x="331" y="198"/>
+                <di:waypoint x="331" y="259"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="MegaId-B748BD56635F7DDE"
+                id="MegaId-CBE9CFA4634570BC-D58436EB00000000"
+                sourceElement="MegaId-CBE9CFA4634570BC-DE5C341D00000000" targetElement="MegaId-CBE9CFA4634570BC-8A7C35BF00000000">
+                <di:waypoint x="2015" y="1132"/>
+                <di:waypoint x="2015" y="1265"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="MegaId-B748BD6B635F7E51"
+                id="MegaId-CBE9CFA4634570BC-F1C036EB00000000"
+                sourceElement="MegaId-CBE9CFA4634570BC-513834F800000000" targetElement="MegaId-CBE9CFA4634570BC-A90036E800000000">
+                <di:waypoint x="2028" y="1338"/>
+                <di:waypoint x="2028" y="1437"/>
+                <di:waypoint x="2196" y="1437"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="MegaId-B748C2C6635F8237"
+                id="MegaId-CBE9CFA4634570BC-4BFC36EE00000000"
+                sourceElement="MegaId-CBE9CFA4634570BC-126836E900000000" targetElement="MegaId-CBE9CFA4634570BC-1F7036E900000000">
+                <di:waypoint x="2329" y="1438"/>
+                <di:waypoint x="2329" y="1590"/>
+                <di:waypoint x="2451" y="1590"/>
+            </bpmndi:BPMNEdge>
+        </bpmndi:BPMNPlane>
+    </bpmndi:BPMNDiagram>
+</bpmn:definitions>
